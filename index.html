@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>С 8 Марта 💐</title>
+  <meta name="description" content="Небольшой сюрприз к 8 марта" />
+  <style>
+    :root{
+      --bg1:#ff5fb7;
+      --bg2:#7c4dff;
+      --bg3:#00d4ff;
+      --card: rgba(255,255,255,.14);
+      --card2: rgba(255,255,255,.10);
+      --txt: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --shadow: 0 20px 60px rgba(0,0,0,.25);
+      --radius: 22px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--txt);
+      overflow-x:hidden;
+      background:
+        radial-gradient(1200px 800px at 10% 10%, rgba(255,255,255,.20), transparent 60%),
+        radial-gradient(900px 700px at 90% 20%, rgba(255,255,255,.16), transparent 55%),
+        linear-gradient(120deg, var(--bg1), var(--bg2), var(--bg3));
+      background-size: 200% 200%;
+      animation: bgMove 12s ease-in-out infinite;
+    }
+    @keyframes bgMove{
+      0%{background-position: 0% 50%}
+      50%{background-position: 100% 50%}
+      100%{background-position: 0% 50%}
+    }
+
+    /* floating hearts */
+    .floaties{
+      position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;
+    }
+    .heart{
+      position:absolute;
+      font-size: clamp(14px, 2.2vw, 24px);
+      opacity:.0;
+      transform: translateY(20px) scale(.8);
+      animation: floatUp linear forwards;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,.18));
+    }
+    @keyframes floatUp{
+      0%{opacity:0; transform: translateY(30px) scale(.85) rotate(0deg)}
+      10%{opacity:.85}
+      100%{opacity:0; transform: translateY(-120vh) scale(1.15) rotate(18deg)}
+    }
+
+    .wrap{
+      position:relative;
+      z-index:1;
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 28px 16px;
+    }
+
+    .card{
+      width:min(980px, 100%);
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      overflow:hidden;
+    }
+
+    header{
+      padding: 28px 22px 10px;
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .title{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      min-width: 260px;
+    }
+    h1{
+      margin:0;
+      font-size: clamp(26px, 4vw, 44px);
+      letter-spacing: .2px;
+      line-height: 1.05;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size: 15px;
+      line-height:1.5;
+      max-width: 60ch;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.20);
+      background: rgba(255,255,255,.10);
+      box-shadow: 0 10px 24px rgba(0,0,0,.14);
+      user-select:none;
+      font-size: 14px;
+      color: rgba(255,255,255,.90);
+    }
+    .badge b{color:white}
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      padding: 18px 22px 22px;
+    }
+    @media (max-width: 880px){
+      .grid{grid-template-columns: 1fr}
+    }
+
+    .panel{
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 12px 28px rgba(0,0,0,.16);
+    }
+    .panel h2{
+      margin:0 0 10px;
+      font-size: 18px;
+      letter-spacing:.2px;
+    }
+    .panel p{
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height:1.55;
+      font-size: 14.5px;
+    }
+
+    .btns{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 8px;
+    }
+    button{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-weight: 650;
+      font-size: 14px;
+      color: rgba(30,15,35,.95);
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 12px 22px rgba(0,0,0,.16);
+      transition: transform .08s ease, filter .2s ease, box-shadow .2s ease;
+      user-select:none;
+    }
+    button:hover{filter: brightness(1.02)}
+    button:active{transform: translateY(1px) scale(.99)}
+    .ghost{
+      background: rgba(255,255,255,.12);
+      color: rgba(255,255,255,.92);
+      border: 1px solid rgba(255,255,255,.25);
+      box-shadow:none;
+    }
+    .danger{
+      background: rgba(255,255,255,.18);
+      color: rgba(255,255,255,.95);
+      border: 1px solid rgba(255,255,255,.30);
+      box-shadow:none;
+    }
+
+    .out{
+      min-height: 116px;
+      border-radius: 16px;
+      padding: 14px 14px;
+      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.92);
+      line-height: 1.55;
+      font-size: 14.5px;
+      white-space: pre-wrap;
+    }
+    .out .hint{
+      color: rgba(255,255,255,.72);
+      font-size: 13px;
+    }
+
+    .gifts{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+      margin-top:10px;
+    }
+    .gift{
+      padding: 12px 10px;
+      border-radius: 16px;
+      border: 1px dashed rgba(255,255,255,.28);
+      background: rgba(255,255,255,.10);
+      text-align:center;
+      cursor:pointer;
+      transition: transform .12s ease, background .2s ease, border-color .2s ease;
+      user-select:none;
+    }
+    .gift:hover{transform: translateY(-1px); background: rgba(255,255,255,.14)}
+    .gift b{display:block; font-size: 16px; margin-bottom:4px}
+    .gift span{font-size: 12.5px; color: rgba(255,255,255,.74)}
+
+    footer{
+      padding: 0 22px 22px;
+      color: rgba(255,255,255,.70);
+      font-size: 12.8px;
+      line-height:1.5;
+    }
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 10px;
+      padding: 3px 8px;
+      display:inline-block;
+      transform: translateY(-1px);
+    }
+
+    /* modal */
+    .modalBack{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.46);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 16px;
+      z-index: 50;
+    }
+    .modal{
+      width:min(680px, 100%);
+      border-radius: 20px;
+      background: rgba(20,12,26,.72);
+      border: 1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 22px 70px rgba(0,0,0,.40);
+      padding: 16px;
+    }
+    .modal h3{margin:0 0 8px; font-size: 18px}
+    .modal p{margin:0 0 12px; color: rgba(255,255,255,.78); line-height:1.55}
+    .modal .row{display:flex; gap:10px; flex-wrap:wrap}
+    .pill{
+      padding: 9px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      color: rgba(255,255,255,.92);
+      font-size: 13px;
+    }
+
+    /* confetti canvas */
+    #confetti{
+      position:fixed; inset:0;
+      pointer-events:none;
+      z-index: 40;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+  <div class="floaties" id="floaties" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <main class="card">
+      <header>
+        <div class="title">
+          <h1 id="heroTitle">С 8 Марта, солнышко 💐</h1>
+          <p class="sub">
+            Маленький сайт-сюрприз: нажимай кнопки, открывай подарки и ищи пасхалки.
+            (Да, это официально разрешённая “прикольная” открытка 😄)
+          </p>
+        </div>
+
+        <div class="badge" title="Можно менять текст прямо в файле index.html">
+          <span>💡</span>
+          <span>Редактирование: <b>внутри</b> `index.html`</span>
+        </div>
+      </header>
+
+      <section class="grid">
+        <div class="panel">
+          <h2>Сюрприз-панель</h2>
+          <p>
+            Кнопки ниже делают “приколы”: комплименты, мини-письмо, конфетти и т.д.
+            Ещё есть секрет: нажми кнопку <span class="kbd">“Секретная”</span> ровно 8 раз 😉
+          </p>
+
+          <div class="btns">
+            <button id="btnCompliment">Сказать комплимент ✨</button>
+            <button id="btnJoke" class="ghost">Рандомный прикол 😄</button>
+            <button id="btnLetter" class="ghost">Открыть письмо 💌</button>
+            <button id="btnConfetti" class="danger">Бахнуть конфетти 🎉</button>
+            <button id="btnSecret" class="ghost">Секретная 🔒</button>
+          </div>
+
+          <div class="out" id="output">
+            <div class="hint">Нажми любую кнопку — тут появится сообщение.</div>
+          </div>
+
+          <div style="margin-top:14px">
+            <h2 style="margin-bottom:8px">Выбери “подарок” 🎁</h2>
+            <p style="margin-bottom:10px">
+              Выбирай любую коробочку. Одна из них особенно наглая 😇
+            </p>
+
+            <div class="gifts" id="gifts">
+              <div class="gift" data-g="1">
+                <b>🎁</b><span>Коробка №1</span>
+              </div>
+              <div class="gift" data-g="2">
+                <b>🎁</b><span>Коробка №2</span>
+              </div>
+              <div class="gift" data-g="3">
+                <b>🎁</b><span>Коробка №3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <h2>Настройки (быстро)</h2>
+          <p>
+            Вверху файла есть блок <span class="kbd">CONFIG</span> — там меняешь имя и тексты.
+          </p>
+
+          <div class="out" id="miniInfo" style="min-height:unset">
+            <b>Подсказки:</b>
+            • Введи на клавиатуре слово <span class="kbd">люблю</span> — будет пасхалка.
+            • Можно поменять фон/цвета через CSS-переменные.
+            • Хочешь “ваши” шутки — замени массивы <span class="kbd">jokes</span> и <span class="kbd">compliments</span>.
+          </div>
+
+          <div style="height:10px"></div>
+
+          <h2>Мини-квест</h2>
+          <p>
+            Сможешь “разблокировать” секрет? Нажми <span class="kbd">Секретная</span> 8 раз.
+            А потом — нажми конфетти.
+          </p>
+
+          <div class="btns">
+            <button id="btnRename" class="ghost">Поменять имя ✍️</button>
+            <button id="btnReset" class="ghost">Сбросить ✨</button>
+          </div>
+        </aside>
+      </section>
+
+      <footer>
+        Сделано с любовью и лёгким юмором ❤️<br/>
+        <span style="opacity:.9">
+          Тех-пасхалка: это один файл. Можно залить на GitHub Pages / Netlify / Cloudflare Pages (инструкция ниже).
+        </span>
+      </footer>
+    </main>
+  </div>
+
+  <div class="modalBack" id="modalBack" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal">
+      <h3 id="modalTitle">Письмо</h3>
+      <p id="modalText"></p>
+      <div class="row" id="modalPills"></div>
+      <div style="height:12px"></div>
+      <div class="row">
+        <button id="modalOk">Закрыть</button>
+        <button id="modalBoom" class="ghost">И ещё конфетти 🎉</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /***********************
+     * CONFIG — ПРАВЬ ТУТ  *
+     ***********************/
+    const CONFIG = {
+      girlName: "Солнышко", // <-- поменяй на имя, например: "Аня"
+      fromName: "Твой (секретный) поклонник 😌", // <-- можно поменять подпись
+      letter: [
+        "Привет! 💌",
+        "Я решил(а) сделать тебе маленький сайт-сюрприз к 8 марта.",
+        "Ты — мой любимый человек и моя ежедневная причина улыбаться.",
+        "Пусть сегодня будет много тепла, лёгкости и хороших моментов ✨",
+        "",
+        "P.S. Если ты нажмёшь ‘Секретная’ 8 раз — там будет кое-что ещё 😉"
+      ].join("\n"),
+    };
+
+    // Можно заменить на ваши личные приколы :)
+    const compliments = [
+      "Ты сегодня выглядишь так, что у меня зависает мозг. В хорошем смысле. 😵‍💫❤️",
+      "Ты — как кофе: без тебя день не тот. ☕️✨",
+      "Если бы красота была валютой — ты бы была центральным банком. 💳👑",
+      "Ты не ‘просто лучшая’. Ты ‘лучше, чем можно было придумать’. 🥹",
+      "У тебя талант: делать мой мир спокойнее одним взглядом. 🫶",
+      "Внимание: ты официально слишком милая. Это нарушение закона. 🚨😄"
+    ];
+
+    const jokes = [
+      "Я хотел подарить тебе весь мир… но курьер сказал: ‘не влезает в лифт’. 🌍📦",
+      "Ты знаешь, почему я улыбаюсь? Потому что ты рядом. А ещё потому что у меня кривые шутки. 😄",
+      "С 8 марта! Желаю тебе: 1) счастья 2) радости 3) чтобы я не тупил(а). ✅",
+      "Я бы написал тебе стих, но рифмы закончились на слове ‘люблю’. Так что… люблю. ❤️",
+      "Ты — мой вай-фай: без тебя связь с реальностью пропадает. 📶🥲",
+      "Сегодня ты королева. Завтра тоже. И послезавтра. (Я проверял календарь) 👑📅"
+    ];
+
+    const giftMessages = {
+      1: "В этой коробке: 1) обнимашка 🤗 2) поцелуй 😘 3) и ещё один поцелуй (контрольный) 💋",
+      2: "Тут спрятано: право требовать комплименты в любое время суток. Безлимит. ✅",
+      3: "Самая наглая коробка 😇: ‘Сейчас ты улыбнёшься’. Если не улыбнулась — я проиграл! 😄"
+    };
+
+    /***********************
+     * UI wiring           *
+     ***********************/
+    const $ = (s) => document.querySelector(s);
+    const output = $("#output");
+    const heroTitle = $("#heroTitle");
+
+    function setHero(){
+      heroTitle.textContent = `С 8 Марта, ${CONFIG.girlName} 💐`;
+      document.title = `С 8 Марта, ${CONFIG.girlName} 💐`;
+    }
+    setHero();
+
+    function say(text){
+      output.textContent = text;
+    }
+    function rand(arr){ return arr[Math.floor(Math.random()*arr.length)] }
+
+    // floating hearts generator
+    const floaties = $("#floaties");
+    const heartChars = ["💗","💖","💘","💝","💞","🌸","✨","💐"];
+    function spawnHeart(){
+      const el = document.createElement("div");
+      el.className = "heart";
+      el.textContent = rand(heartChars);
+      const left = Math.random()*100;
+      const dur = 6 + Math.random()*6;
+      const delay = Math.random()*0.4;
+      el.style.left = left + "vw";
+      el.style.bottom = (-10 - Math.random()*20) + "vh";
+      el.style.animationDuration = dur + "s";
+      el.style.animationDelay = delay + "s";
+      floaties.appendChild(el);
+      setTimeout(()=> el.remove(), (dur+delay)*1000);
+    }
+    setInterval(spawnHeart, 520);
+
+    // modal
+    const modalBack = $("#modalBack");
+    const modalTitle = $("#modalTitle");
+    const modalText = $("#modalText");
+    const modalPills = $("#modalPills");
+    function openModal(title, text, pills=[]){
+      modalTitle.textContent = title;
+      modalText.textContent = text;
+      modalPills.innerHTML = "";
+      pills.forEach(p=>{
+        const span = document.createElement("span");
+        span.className = "pill";
+        span.textContent = p;
+        modalPills.appendChild(span);
+      });
+      modalBack.style.display = "flex";
+      modalBack.setAttribute("aria-hidden","false");
+    }
+    function closeModal(){
+      modalBack.style.display = "none";
+      modalBack.setAttribute("aria-hidden","true");
+    }
+    $("#modalOk").addEventListener("click", closeModal);
+    modalBack.addEventListener("click", (e)=> { if(e.target === modalBack) closeModal(); });
+
+    // secret counter
+    let secretClicks = 0;
+    let secretUnlocked = false;
+
+    $("#btnCompliment").addEventListener("click", ()=>{
+      say("✨ " + rand(compliments));
+    });
+
+    $("#btnJoke").addEventListener("click", ()=>{
+      say("😄 " + rand(jokes));
+    });
+
+    $("#btnLetter").addEventListener("click", ()=>{
+      openModal("Письмо 💌", CONFIG.letter + `\n\n— ${CONFIG.fromName}`, [
+        "8 марта = праздник тебя",
+        "улыбка обязательна 🙂",
+        "обнимашки по запросу"
+      ]);
+    });
+
+    $("#btnConfetti").addEventListener("click", ()=>{
+      boomConfetti(secretUnlocked ? 220 : 120);
+      say(secretUnlocked
+        ? "🎉 Секрет активирован! Конфетти усилено. Ты супер! 💖"
+        : "🎉 Бах! Конфетти. (Если хочешь ‘режим турбо’ — найди секрет 😉)");
+    });
+
+    $("#btnSecret").addEventListener("click", ()=>{
+      secretClicks++;
+      const left = 8 - secretClicks;
+      if(secretClicks < 8){
+        say(`🔒 Секретная кнопка нажата: ${secretClicks}/8.\nЕщё осталось: ${left} 😇`);
+      } else if(secretClicks === 8){
+        secretUnlocked = true;
+        say("🔓 Опа! Секрет разблокирован.\nТеперь нажми ‘Бахнуть конфетти’ 😉");
+        boomConfetti(260);
+        openModal("Секрет открыт 🔓",
+          "Ты — мой самый любимый ‘сюрприз’ в жизни.\nСпасибо, что ты есть ❤️",
+          ["секрет ✅", "обнимашки ✅", "поцелуи ✅"]
+        );
+      } else {
+        say("😄 Ты уже открыла секрет. Но мне нравится твой энтузиазм.");
+      }
+    });
+
+    // gifts
+    $("#gifts").addEventListener("click", (e)=>{
+      const card = e.target.closest(".gift");
+      if(!card) return;
+      const g = card.getAttribute("data-g");
+      const msg = giftMessages[g] || "🎁 Пусто! (Шучу 😄)";
+      say(msg);
+      boomConfetti(90);
+    });
+
+    // rename
+    $("#btnRename").addEventListener("click", ()=>{
+      const name = prompt("Как её зовут? (например: Аня)");
+      if(name && name.trim()){
+        CONFIG.girlName = name.trim();
+        setHero();
+        say(`Готово ✍️ Теперь открытка для: ${CONFIG.girlName} 💐`);
+        boomConfetti(80);
+      } else {
+        say("Окей, оставим как есть 🙂");
+      }
+    });
+
+    $("#btnReset").addEventListener("click", ()=>{
+      secretClicks = 0;
+      secretUnlocked = false;
+      say("Сбросил(а) квест. Можно снова искать секрет 😇");
+      boomConfetti(60);
+    });
+
+    $("#modalBoom").addEventListener("click", ()=> boomConfetti(secretUnlocked ? 260 : 140));
+
+    // keyboard easter egg: type "люблю"
+    const easterWord = "люблю";
+    let typed = "";
+    window.addEventListener("keydown", (e)=>{
+      if(e.key.length === 1){
+        typed += e.key.toLowerCase();
+        if(typed.length > 12) typed = typed.slice(-12);
+        if(typed.includes(easterWord)){
+          typed = "";
+          boomConfetti(240);
+          openModal("Пасхалка 🐣",
+            "Поймала!\n\nЯ тебя люблю. Вот прям очень. ❤️",
+            ["люблю", "люблю", "люблю"]
+          );
+        }
+      }
+    });
+
+    /***********************
+     * Confetti (canvas)   *
+     ***********************/
+    const canvas = $("#confetti");
+    const ctx = canvas.getContext("2d");
+    let W, H, confetti = [], animId = null;
+
+    function resize(){
+      W = canvas.width = window.innerWidth * devicePixelRatio;
+      H = canvas.height = window.innerHeight * devicePixelRatio;
+      canvas.style.width = window.innerWidth + "px";
+      canvas.style.height = window.innerHeight + "px";
+      ctx.setTransform(1,0,0,1,0,0);
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    function boomConfetti(n=120){
+      const cx = W/2, cy = H*0.25;
+      for(let i=0;i<n;i++){
+        confetti.push({
+          x: cx + (Math.random()-0.5)*120,
+          y: cy + (Math.random()-0.5)*60,
+          vx: (Math.random()-0.5)*12,
+          vy: Math.random()*-10 - 4,
+          g: 0.22 + Math.random()*0.08,
+          r: 4 + Math.random()*6,
+          a: 1,
+          spin: (Math.random()-0.5)*0.4,
+          rot: Math.random()*Math.PI*2,
+          // без задания цветов: берём случайный оттенок через hsl
+          h: Math.floor(Math.random()*360),
+        });
+      }
+      if(!animId) tick();
+    }
+
+    function tick(){
+      animId = requestAnimationFrame(tick);
+      ctx.clearRect(0,0,W,H);
+
+      for(let i=confetti.length-1;i>=0;i--){
+        const p = confetti[i];
+        p.vy += p.g;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rot += p.spin;
+        p.a -= 0.006;
+
+        if(p.a <= 0 || p.y > H+30){
+          confetti.splice(i,1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, p.a);
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = `hsl(${p.h}, 95%, 65%)`;
+        ctx.fillRect(-p.r, -p.r, p.r*2.2, p.r*1.2);
+        ctx.restore();
+      }
+
+      if(confetti.length === 0){
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+    }
+
+    // first little boom
+    setTimeout(()=> boomConfetti(90), 500);
+  </script>
+</body>
+</html>
